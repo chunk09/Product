@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 보기</title>
+</head>
+<style>
+  .container {
+    width: 50%;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%);
+  }
+  .container input {
+    width: 70%;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: gray;
+  }
+  .container input:focus {
+    outline: none;
+  }
+  .bottom-bar a .modify {
+    background-color: dodgerblue;
+    color: white;
+    width: 35%;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: none;
+  }
+  .bottom-bar a .delete {
+      width: 35%;
+      padding: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 10px;
+  }
+
+  .button {
+    background-color: gray;
+    color: white;
+    width: 35%;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+</style>
+
+<script>
+  function cancel() {
+    location.replace('/list');
+  }
+</script>
+
+<body>
+<div class="container">
+    <h1>상품 보기</h1>
+
+    <input type="text" th:value="${product.name}" readonly />
+    <input type="number" th:value="${product.price}" readonly />
+    <input type="number" th:value="${product.mount}" readonly />
+
+    <div class="bottom-bar">
+        <a th:href="@{/modify/{id}(id = ${product.id})}"><button type="button" class="modify">상품 수정</button></a>
+        <button type="button" onclick="cancel()" class="button">목록으로</button>
+    </div>
+</div>
+</body>
+</html>

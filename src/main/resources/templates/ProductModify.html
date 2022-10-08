@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>상품 수정</title>
+</head>
+
+<style>
+  .container {
+    width: 50%;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%);
+  }
+  .container input {
+    width: 70%;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  .container input:focus {
+    outline: none;
+  }
+  .bottom-bar button:first-child {
+    background-color: dodgerblue;
+    color: white;
+    width: 35%;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: none;
+  }
+  .bottom-bar button:last-child {
+    background-color: gray;
+    color: white;
+    width: 35%;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+</style>
+
+<script>
+  function cancel() {
+    alert('취소되었습니다.');
+
+    location.replace('/list');
+  }
+</script>
+
+<body>
+<div class="container">
+  <form th:action="@{/update/{id}(id = ${product.id})}" method="post">
+    <h1>상품 수정</h1>
+
+    <input type="text" th:value="${product.name}" name="name" />
+    <input type="number" th:value="${product.price}" name="price" />
+    <input type="number" th:value="${product.mount}" name="mount" />
+
+    <div class="bottom-bar">
+      <button type="submit">상품 수정</button>
+      <button type="button" onclick="cancel()">취소</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

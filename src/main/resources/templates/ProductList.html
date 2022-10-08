@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 목록</title>
+</head>
+
+<style>
+    .layout {
+        width: 500px;
+        margin: 40px auto 0;
+    }
+    .layout a {
+        color: deepskyblue;
+        text-decoration: none;
+    }
+    table {
+        width: 100%;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+
+<body>
+<div class="layout">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>수량</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Product : ${list}">
+            <td th:text="${Product.id}">1</td>
+            <td><a th:text="${Product.name}" th:href="@{/view(id=${Product.id})}"></a></td>
+            <td th:text="${Product.price}"></td>
+            <td th:text="${Product.mount}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
